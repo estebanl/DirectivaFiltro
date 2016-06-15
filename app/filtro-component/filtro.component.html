@@ -1,0 +1,126 @@
+<div>
+    <style>
+        .input-xs {
+            width: 30%;
+            height: 10%!important;
+        }
+    </style>
+    <form class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="checkbox" ng-model="vm.estado" /> Estado
+            </div>
+            <div class="col-sm-12" ng-show="vm.estado">
+                <div class="container">
+                    <ul class="list-unstyled">
+                        <li><input type="radio" name="uno" /> Activo</li>
+                        <li><input type="radio" name="uno" /> Inactivo</li>
+                        <li><input type="radio" name="uno" /> Prospecto interesante</li>
+                        <li><input type="radio" name="uno" /> Preprospecto</li>
+                        <li><input type="radio" name="uno" /> Otro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="checkbox" ng-model="vm.ubicacion" /> Ubicacion
+            </div>
+            <div class="col-sm-12" ng-show="vm.ubicacion">
+                <div class="container">
+                    <ul class="list-unstyled">
+                        <li>
+                            <label>Ciudad</label> <select>
+                                <option>Cali</option>
+                                <option>Bogota</option>
+                                <option>Medellin</option>
+                                <option>Cartagena</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>Zona</label> <select class="">
+                                <option>ROBLEDO</option>
+                                <option>CASTILLA</option>
+                                <option>LA CANDELARIA</option>
+                                <option>CENTRO</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>Subzona</label><select class="">
+                                <option>MARRUECOS</option>
+                                <option>MARCO FIDEL SUAREZ</option>
+                                <option>SAN JOSE</option>
+                                <option>JERUSALEN</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="checkbox" ng-model="vm.datosCliente" /> Datos cliente
+            </div>
+            <div class="col-sm-12" ng-show="vm.datosCliente">
+                <div class="container">
+                    <ul class="list-unstyled">
+                        <li>
+                            <label for="identificacion">Identificación</label><input type="text">
+                        </li>
+                        <li>
+                            <label for="razonSocial">Razon social</label><input type="text">
+                        </li>
+                        <li>
+                            <label for="paginaWeb">Pagina web</label><input type="text">
+                        </li>
+                        <li>
+                            <label for="email">Email</label><input type="text">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="checkbox" ng-model="vm.datosFacturacion" /> Datos facturación
+            </div>
+            <div class="col-sm-12" ng-show="vm.datosFacturacion">
+                <div class="container">
+                    <ul>
+                        <li>
+                            <label for="direccion">Dirección</label>
+                            <input type="text" />
+                        </li>
+                        <li>
+                            <label>Ciudad facturación</label>
+                            <select name="ciudadFacturacion" id="ciudaFacturacion">
+                                <option value="">Cali</option>
+                                <option value="">Cartagena</option>
+                                <option value="">Pereira</option>
+                                <option value="">Pasto</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="">Cumplimiento cartera</label>
+                            <select name="cumplimientoCartera" id="cumplimientoCartera">
+                                <option value="">Bueno</option>
+                                <option value="">Regular</option>
+                                <option value="">Malo</option>
+                            </select>
+                        </li>
+                        <li><label for="">Forma de pago</label>
+                            <select name="formaPago" id="formaPago">
+                                <option value="">Anticipado</option>
+                                <option value=""></option>
+                                <option value=""></option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

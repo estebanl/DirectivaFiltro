@@ -1,0 +1,21 @@
+{
+  "name": "directivafiltro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-inject": "^4.1.0",
+    "lite-server": "^2.2.0"
+  }
+}
