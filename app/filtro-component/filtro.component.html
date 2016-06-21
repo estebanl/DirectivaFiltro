@@ -1,126 +1,196 @@
-<div>
+<div class="contenedor">
     <style>
+        .contenedor {
+            display: flex;
+        }
+        
+        .izquierdo {
+            order: 1;
+        }
+        
+        .derecho {
+            order: 2;
+        }
+        
+        .input-xl {
+            width: 100%;
+        }
+        
         .input-xs {
-            width: 30%;
-            height: 10%!important;
+            padding: 3px 0px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .label-xs{
+            width: 150px;
+            text-align: right;
         }
     </style>
-    <form class="form-horizontal">
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="checkbox" ng-model="vm.estado" /> Estado
-            </div>
-            <div class="col-sm-12" ng-show="vm.estado">
+    <div class="izquierdo">
+        <form class="form-horizontal" novalidate ng-submit="vm.enviar()">
+            <div class="row">
                 <div class="container">
-                    <ul class="list-unstyled">
-                        <li><input type="radio" name="uno" /> Activo</li>
-                        <li><input type="radio" name="uno" /> Inactivo</li>
-                        <li><input type="radio" name="uno" /> Prospecto interesante</li>
-                        <li><input type="radio" name="uno" /> Preprospecto</li>
-                        <li><input type="radio" name="uno" /> Otro</li>
-                    </ul>
+                    <md-input-container class="md-block">
+                        <label>Buscar</label>
+                        <input type="text">
+                    </md-input-container>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="checkbox" ng-model="vm.estado" /> Estado
+                </div>
+                <div class="col-sm-12" ng-show="vm.estado">
+                    <div class="container">
+                        <ul class="list-unstyled">
+                            <li>
+                                <input ng-model="vm.cliente.EstadoCliente" type="radio" ng-value="" name="uno" />Todos
+                            </li>
+                            <li ng-repeat="estado in vm.estadosCliente">
+                                <input ng-model="vm.cliente.EstadoCliente" type="radio" ng-value="estado" name="uno" />{{estado.Valor}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="checkbox" ng-model="vm.ubicacion" /> Ubicacion
-            </div>
-            <div class="col-sm-12" ng-show="vm.ubicacion">
-                <div class="container">
-                    <ul class="list-unstyled">
-                        <li>
-                            <label>Ciudad</label> <select>
-                                <option>Cali</option>
-                                <option>Bogota</option>
-                                <option>Medellin</option>
-                                <option>Cartagena</option>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="checkbox" ng-model="vm.ubicacion" /> Ubicacion
+                </div>
+                <div class="col-sm-12" ng-show="vm.ubicacion">
+                    <div class="container">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label class="label-xs">Ciudad</label>
+                                <select class="input-xs" ng-model="vm.cliente.Ciudad" ng-options="ciudad as ciudad.Valor for ciudad in vm.ciudades track by ciudad.Guid">
+                                    <option value="">-Ciudad-</option>
                             </select>
-                        </li>
-                        <li>
-                            <label>Zona</label> <select class="">
-                                <option>ROBLEDO</option>
-                                <option>CASTILLA</option>
-                                <option>LA CANDELARIA</option>
-                                <option>CENTRO</option>
+                            </li>
+                            <li>
+                                <label class="label-xs">Zona</label>
+                                <select class="input-xs" ng-model="vm.cliente.Zona" ng-options="zona as zona.Valor for zona in vm.zonas track by zona.Guid">
+                                <option value="">-Zona-</option>
                             </select>
-                        </li>
-                        <li>
-                            <label>Subzona</label><select class="">
-                                <option>MARRUECOS</option>
-                                <option>MARCO FIDEL SUAREZ</option>
-                                <option>SAN JOSE</option>
-                                <option>JERUSALEN</option>
+                            </li>
+                            <li>
+                                <label class="label-xs">Subzona</label>
+                                <select class="input-xs" ng-model="vm.cliente.SubZona" ng-options="subzona as subzona.Valor for subzona in vm.subzonas track by subzona.Guid">
+                                <option value="">-SubZona-</option>
                             </select>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="checkbox" ng-model="vm.datosCliente" /> Datos cliente
-            </div>
-            <div class="col-sm-12" ng-show="vm.datosCliente">
-                <div class="container">
-                    <ul class="list-unstyled">
-                        <li>
-                            <label for="identificacion">Identificación</label><input type="text">
-                        </li>
-                        <li>
-                            <label for="razonSocial">Razon social</label><input type="text">
-                        </li>
-                        <li>
-                            <label for="paginaWeb">Pagina web</label><input type="text">
-                        </li>
-                        <li>
-                            <label for="email">Email</label><input type="text">
-                        </li>
-                    </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="checkbox" ng-model="vm.datosCliente" /> Datos cliente
+                </div>
+                <div class="col-sm-12" ng-show="vm.datosCliente">
+                    <div class="container">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label class="label-xs">Identificacion</label>
+                                <input ng-model="vm.cliente.Identificacion" type="text" class="input-xs">
+                            </li>
+                            <li>
+                                <label class="label-xs" for="razonSocial">Razon social</label>
+                                <input ng-model="vm.cliente.RazonSocialActual" type="text" class="input-xs">
+                            </li>
+                            <li>
+                                <label class="label-xs" for="paginaWeb">Pagina web</label>
+                                <input ng-model="vm.cliente.PaginaWeb" type="text" class="input-xs">
+                            </li>
+                            <li>
+                                <label class="label-xs" for="email">Email</label>
+                                <input ng-model="vm.cliente.Email" type="text" class="input-xs">
+                            </li>
+                            <li>
+                                <label class="label-xs" for="Telefono">Telefono</label>
+                                <input ng-model="vm.cliente.Telefono" type="text" class="input-xs">
+                            </li>
+                            <li>
+                                <label class="label-xs" for="PeriodoMantenimiento">Periodo Manteniento</label>
+                                <select ng-model="vm.cliente.PeriodoMantenimiento" name="" class="input-xs">
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                                <option value="12">12</option>
+                            </select>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="checkbox" ng-model="vm.datosFacturacion" /> Datos facturación
-            </div>
-            <div class="col-sm-12" ng-show="vm.datosFacturacion">
-                <div class="container">
-                    <ul>
-                        <li>
-                            <label for="direccion">Dirección</label>
-                            <input type="text" />
-                        </li>
-                        <li>
-                            <label>Ciudad facturación</label>
-                            <select name="ciudadFacturacion" id="ciudaFacturacion">
-                                <option value="">Cali</option>
-                                <option value="">Cartagena</option>
-                                <option value="">Pereira</option>
-                                <option value="">Pasto</option>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="checkbox" ng-model="vm.datosFacturacion" /> Datos facturación
+                </div>
+                <div class="col-sm-12" ng-show="vm.datosFacturacion">
+                    <div class="container">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label class="label-xs" for="direccion">Dirección</label>
+                                <input class="input-xs" type="text" />
+                            </li>
+                            <li>
+                                <label class="label-xs">Ciudad facturación</label>
+                                <select class="input-xs" ng-model="vm.cliente.CiudadFacturacion" ng-options="ciudad as ciudad.Valor for ciudad in vm.ciudades track by ciudad.Guid">
+                                <option value="">-Ciudad facturacion-</option>
                             </select>
-                        </li>
-                        <li>
-                            <label for="">Cumplimiento cartera</label>
-                            <select name="cumplimientoCartera" id="cumplimientoCartera">
-                                <option value="">Bueno</option>
-                                <option value="">Regular</option>
-                                <option value="">Malo</option>
+                            </li>
+                            <li>
+                                <label class="label-xs" for="">Cumplimiento cartera</label>
+                                <select class="input-xs" ng-model="vm.cliente.CumplimientoCartera" ng-options="cumplimiento as cumplimiento.Valor for cumplimiento in vm.cumplimientoCartera track by cumplimiento.Guid">
+                                <option value="">-Cumplimiento cartera-</option>
                             </select>
-                        </li>
-                        <li><label for="">Forma de pago</label>
-                            <select name="formaPago" id="formaPago">
-                                <option value="">Anticipado</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                            </li>
+                            <li>
+                                <label class="label-xs" for="">Forma de pago</label>
+                                <select class="input-xs" ng-model="vm.cliente.FormaPago" ng-options="formaPago as formaPago.Valor for formaPago in vm.formasPago track by formaPago.Guid">
+                                <option value="">-Forma pago-</option>
                             </select>
-                        </li>
-                    </ul>
+                            </li>
+                            <li>
+                                <label class="label-xs" for="SucursalFacturacion">Sucursal Facturación</label>
+                                <select class="input-xs" ng-model="vm.cliente.SucursalFacturacion" ng-options="sucursal as sucursal.Valor for sucursal in vm.sucursales track by sucursal.Guid">
+                                <option value="">-Sucursal-</option>
+                            </select></li>
+                            <li>
+                                <label class="label-xs">Recibe facturacion hasta</label>
+                                <input class="input-xs" ng-model="vm.cliente.RecibeFacturacionHasta" type="date">
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
+            <div>
+                <input type="submit" class="btn btn-info btn-xs" value="Aplicar filtro">
+                <input ng-click="vm.cancelar()" type="reset" value="Cancelar" class="btn btn-xs btn-warning"/>              
+              </div>
+        </form>
+    </div>
+    <div class="derecho">
+        <h1>Resultado</h1>
+
+        <ul class="list-group" ng-repeat="cliente in vm.clientes">
+            <li class="list-group-item">
+                {{cliente.RazonSocialActual}} {{cliente.Identificacion}} {{cliente.PaginaWeb}} {{cliente.DigitoVerificacion}} {{cliente.Email}}
+                {{cliente.PeriodoMantenimiento}} {{cliente.FechaCreacion | date}}  Recibe factura {{cliente.RecibeFacturacionHasta | date}}
+                {{cliente.Telefono_uno}} {{cliente.Ciudad.Descripcion}}
+            </li>
+        </ul>
+
+    </div>
 </div>

@@ -1,0 +1,13 @@
+{
+  "name": "directivafiltro",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/estebanl/DirectivaFiltro",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

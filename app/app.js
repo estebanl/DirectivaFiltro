@@ -1,5 +1,5 @@
 (function () {
 
-   var module = angular.module('app',[]);
+   var module = angular.module('app',['ngMaterial']);
 
 }())
